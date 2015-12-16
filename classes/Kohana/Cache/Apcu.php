@@ -9,7 +9,7 @@
  *
  *     return array(
  *          'apcu' => array(                          // Driver group
- *                  'driver'         => 'apcu',         // using APC driver
+ *                  'driver'         => 'apcu',         // using APCu driver
  *           ),
  *     )
  *
@@ -28,7 +28,7 @@
  *
  * *  Kohana 3.0.x
  * *  PHP 5.2.4 or greater
- * *  APC PHP extension
+ * *  APCu PHP extension
  *
  * @package    Kohana/Cache
  * @category   Base
@@ -39,7 +39,7 @@
 class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic {
 
 	/**
-	 * Check for existence of the APC extension This method cannot be invoked externally. The driver must
+	 * Check for existence of the APCu extension This method cannot be invoked externally. The driver must
 	 * be instantiated using the `Cache::instance()` method.
 	 *
 	 * @param  array  $config  configuration
@@ -58,10 +58,10 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic {
 	/**
 	 * Retrieve a cached value entry by id.
 	 *
-	 *     // Retrieve cache entry from apc group
+	 *     // Retrieve cache entry from apcu group
 	 *     $data = Cache::instance('apcu')->get('foo');
 	 *
-	 *     // Retrieve cache entry from apc group and return 'bar' if miss
+	 *     // Retrieve cache entry from apcu group and return 'bar' if miss
 	 *     $data = Cache::instance('apcu')->get('foo', 'bar');
 	 *
 	 * @param   string  $id       id of cache to entry
@@ -81,10 +81,10 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic {
 	 *
 	 *     $data = 'bar';
 	 *
-	 *     // Set 'bar' to 'foo' in apc group, using default expiry
+	 *     // Set 'bar' to 'foo' in apcu group, using default expiry
 	 *     Cache::instance('apcu')->set('foo', $data);
 	 *
-	 *     // Set 'bar' to 'foo' in apc group for 30 seconds
+	 *     // Set 'bar' to 'foo' in apcu group for 30 seconds
 	 *     Cache::instance('apcu')->set('foo', $data, 30);
 	 *
 	 * @param   string   $id        id of cache entry
@@ -105,7 +105,7 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic {
 	/**
 	 * Delete a cache entry based on id
 	 *
-	 *     // Delete 'foo' entry from the apc group
+	 *     // Delete 'foo' entry from the apcu group
 	 *     Cache::instance('apcu')->delete('foo');
 	 *
 	 * @param   string  $id  id to remove from cache
@@ -123,7 +123,7 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic {
 	 * using shared memory cache systems, as it will wipe every
 	 * entry within the system for all clients.
 	 *
-	 *     // Delete all cache entries in the apc group
+	 *     // Delete all cache entries in the apcu group
 	 *     Cache::instance('apcu')->delete_all();
 	 *
 	 * @return  boolean
